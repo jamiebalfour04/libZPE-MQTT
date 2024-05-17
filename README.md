@@ -1,1 +1,5 @@
-Simply add the JAR file to the native-plugins folder to add it to ZPE. It has just one object that it exposes called mqtt_object. Simply set a variable to a new mqtt_object to get this to work.
+To add the JAR file to ZPE, simply add it to the native-plugins folder. It exposes only one object, mqtt_object. To get this to work, set a variable to a new mqtt_object.
+
+```
+$mqtt = new mqtt_object()
+```
