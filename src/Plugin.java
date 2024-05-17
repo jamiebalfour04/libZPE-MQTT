@@ -16,6 +16,8 @@ public class Plugin implements ZPELibrary {
   public Map<String, Class<?>> objects() {
     Map<String, Class<?>> m = new HashMap<>();
     m.put("mqtt_object", MQTTObject.class);
+
+    return m;
   }
 
   @Override

@@ -1,0 +1,1 @@
+Simply add the JAR file to the native-plugins folder to add it to ZPE. It has just one object that it exposes called mqtt_object. Simply set a variable to a new mqtt_object to get this to work.
