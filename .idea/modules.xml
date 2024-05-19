@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/libZPEMQTT.iml" filepath="$PROJECT_DIR$/libZPEMQTT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libZPE-MQTT.iml" filepath="$PROJECT_DIR$/libZPE-MQTT.iml" />
     </modules>
   </component>
 </project>
