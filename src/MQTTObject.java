@@ -33,7 +33,7 @@ public class MQTTObject extends ZPEStructure {
   class connect_Command implements jamiebalfour.zpe.interfaces.ZPEObjectNativeMethod {
 
     @Override
-    public String[] ParameterNames() {
+    public String[] getParameterNames() {
       String[] n = new String[4];
       n[0] = "ip";
       n[1] = "port";
@@ -62,11 +62,11 @@ public class MQTTObject extends ZPEStructure {
     }
 
     @Override
-    public int RequiredPermissionLevel() {
+    public int getRequiredPermissionLevel() {
       return 0;
     }
 
-    public String name() {
+    public String getName() {
       return "connect";
     }
 
@@ -75,7 +75,7 @@ public class MQTTObject extends ZPEStructure {
   class publish_Command implements jamiebalfour.zpe.interfaces.ZPEObjectNativeMethod {
 
     @Override
-    public String[] ParameterNames() {
+    public String[] getParameterNames() {
       String[] n = new String[2];
       n[0] = "topic";
       n[1] = "message";
@@ -97,11 +97,11 @@ public class MQTTObject extends ZPEStructure {
     }
 
     @Override
-    public int RequiredPermissionLevel() {
+    public int getRequiredPermissionLevel() {
       return 0;
     }
 
-    public String name() {
+    public String getName() {
       return "publish";
     }
 
