@@ -5,8 +5,11 @@ import jamiebalfour.HelperFunctions;
 import jamiebalfour.zpe.core.ZPERuntimeEnvironment;
 import jamiebalfour.zpe.core.ZPEObject;
 import jamiebalfour.zpe.core.ZPEStructure;
+import jamiebalfour.zpe.core.ZPEType;
+import jamiebalfour.zpe.exceptions.ZPERuntimeException;
 import jamiebalfour.zpe.interfaces.ZPEPropertyWrapper;
 
+import jamiebalfour.zpe.types.ZPEBoolean;
 import org.fusesource.mqtt.client.*;
 
 public class MQTTObject extends ZPEStructure {
@@ -16,8 +19,13 @@ public class MQTTObject extends ZPEStructure {
   private static final long serialVersionUID = -9192255670493429584L;
 
   private void addMethods() {
-    addNativeMethod("connect", new connect_Command());
-    addNativeMethod("publish", new publish_Command());
+    try {
+      addNativeMethod("connect", new connect_Command());
+      addNativeMethod("publish", new publish_Command());
+    } catch (ZPERuntimeException e) {
+      throw new RuntimeException(e);
+    }
+
   }
 
   public MQTTObject(ZPERuntimeEnvironment z, ZPEPropertyWrapper parent) {
@@ -43,7 +51,7 @@ public class MQTTObject extends ZPEStructure {
     }
 
     @Override
-    public Object MainMethod(HashMap<String, Object> parameters, ZPEObject parent) {
+    public ZPEType MainMethod(HashMap<String, Object> parameters, ZPEObject parent) {
 
       try {
 
@@ -55,9 +63,9 @@ public class MQTTObject extends ZPEStructure {
         connection = mqtt.blockingConnection();
         connection.connect();
 
-        return true;
+        return new ZPEBoolean(true);
       } catch (Exception e) {
-        return false;
+        return new ZPEBoolean(false);
       }
     }
 
@@ -83,16 +91,16 @@ public class MQTTObject extends ZPEStructure {
     }
 
     @Override
-    public Object MainMethod(HashMap<String, Object> parameters, ZPEObject parent) {
+    public ZPEType MainMethod(HashMap<String, Object> parameters, ZPEObject parent) {
 
       try {
 
         mqtt.setWillTopic(parameters.get("topic").toString());
         connection.publish(parameters.get("topic").toString(), parameters.get("message").toString().getBytes(), QoS.AT_LEAST_ONCE, false);
 
-        return true;
+        return new ZPEBoolean(true);
       } catch (Exception e) {
-        return false;
+        return new ZPEBoolean(false);
       }
     }
 
