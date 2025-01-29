@@ -5,10 +5,11 @@ import jamiebalfour.HelperFunctions;
 import jamiebalfour.zpe.core.ZPERuntimeEnvironment;
 import jamiebalfour.zpe.core.ZPEObject;
 import jamiebalfour.zpe.core.ZPEStructure;
-import jamiebalfour.zpe.core.ZPEType;
+import jamiebalfour.zpe.interfaces.ZPEType;
 import jamiebalfour.zpe.exceptions.ZPERuntimeException;
 import jamiebalfour.zpe.interfaces.ZPEPropertyWrapper;
 
+import jamiebalfour.zpe.interfaces.ZPEType;
 import jamiebalfour.zpe.types.ZPEBoolean;
 import org.fusesource.mqtt.client.*;
 
@@ -51,11 +52,11 @@ public class MQTTObject extends ZPEStructure {
     }
 
     @Override
-    public ZPEType MainMethod(HashMap<String, Object> parameters, ZPEObject parent) {
+    public ZPEType MainMethod(HashMap<String, ZPEType> parameters, ZPEObject parent) {
 
       try {
 
-        mqtt.setHost(parameters.get("ip").toString(), HelperFunctions.StringToInteger(parameters.get("port").toString()));
+        mqtt.setHost(parameters.get("ip").toString(), HelperFunctions.stringToInteger(parameters.get("port").toString()));
         mqtt.setUserName(parameters.get("username").toString());
         mqtt.setPassword(parameters.get("password").toString());
 
@@ -91,7 +92,7 @@ public class MQTTObject extends ZPEStructure {
     }
 
     @Override
-    public ZPEType MainMethod(HashMap<String, Object> parameters, ZPEObject parent) {
+    public ZPEType MainMethod(HashMap<String, ZPEType> parameters, ZPEObject parent) {
 
       try {
 
