@@ -53,6 +53,11 @@ public class MQTTObject extends ZPEStructure {
     }
 
     @Override
+    public String[] getParameterTypes() {
+      return new String[]{"string", "number", "string", "string"};
+    }
+
+    @Override
     public ZPEType MainMethod(BinarySearchTree<String, ZPEType> parameters, ZPEObject parent) {
 
       try {
@@ -90,6 +95,11 @@ public class MQTTObject extends ZPEStructure {
       n[0] = "topic";
       n[1] = "message";
       return n;
+    }
+
+    @Override
+    public String[] getParameterTypes() {
+      return new String[]{"string", "string"};
     }
 
     @Override
